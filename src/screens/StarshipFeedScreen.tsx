@@ -1,8 +1,9 @@
-import { Avatar, Button, Card } from 'react-native-paper';
+import { ActivityIndicator, Avatar, Button, Card } from "react-native-paper"
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native"
 
+import { CardItem } from "~/components/CardItem"
 import React from "react"
-import { default as data } from "../../api/data.json"
+import { useStarships } from "~/hooks/useStarships"
 
 interface ItemProps {
   name: string
@@ -12,29 +13,32 @@ interface ItemProps {
   cost: string
 }
 
-const Item = ({ name, model, crew, hyperdrive, cost }: ItemProps) => {
-  return (
-
-    <Card style={styles.card}>
-      <Card.Title title={name}/>
-      <Card.Content style={styles.cardContent}>
-      <Text>model: {model}</Text>
-      <Text>crew : {crew}</Text>
-      <Text>hyperdrive_rating : {hyperdrive}</Text>
-      <Text>cost_in_credits : {cost}</Text>
-    </Card.Content>
-    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-    </Card>
-  )
-}
-
 export const StarshipFeedScreen = () => {
+  const { data, isError, isLoading } = useStarships()
+
+  if (isError) {
+    return (
+      <View style={styles.containerCenter}>
+        <Text style={styles.error}>Une erreur est survenue, veuillez réessayer ultérieurement</Text>
+      </View>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <View style={styles.containerCenter}>
+        <ActivityIndicator size="large" />
+        <Text style={styles.error}>Chargement des vaisseaux spatiaux en cours</Text>
+      </View>
+    )
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         data={data.results}
         renderItem={({ item }) => (
-          <Item
+          <CardItem
             name={item.name}
             model={item.model}
             crew={item.crew}
@@ -56,15 +60,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 20
   },
-  card: {
-    flex: 2,
-    flexDirection: "column",
-    padding: 20,
-    marginVertical: 20,
-    backgroundColor: "#6ec075",
-    shadowOpacity: 1,
+  error: {
+    color: "red"
   },
-  cardContent: {
-    marginBottom: 10
+  containerCenter: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
   }
 })
