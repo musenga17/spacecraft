@@ -1,17 +1,9 @@
-import { ActivityIndicator, Avatar, Button, Card } from "react-native-paper"
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native"
 
+import { ActivityIndicator } from "react-native-paper"
 import { CardItem } from "~/components/CardItem"
 import React from "react"
 import { useStarships } from "~/hooks/useStarships"
-
-interface ItemProps {
-  name: string
-  model: string
-  crew: string
-  hyperdrive: string
-  cost: string
-}
 
 export const StarshipFeedScreen = () => {
   const { data, isError, isLoading } = useStarships()
