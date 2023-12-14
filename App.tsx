@@ -1,8 +1,8 @@
-import React from "react";
-import { Provider as PaperProvider } from "react-native-paper";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import LoginScreen from "./src/screens/LoginScreen";
+import { Provider as PaperProvider } from "react-native-paper";
+import React from "react";
 import { StarshipFeedScreen } from "./src/screens/StarshipFeedScreen";
 import { TermsScreen } from "./src/screens/TermsScreen";
 
@@ -30,4 +30,7 @@ function App() {
 }
 
 // eslint-disable-next-line import/no-default-export
-export default App;
+//export default App;
+
+// return Storybook's UI
+export { default } from "./.storybook";
