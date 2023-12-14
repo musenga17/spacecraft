@@ -6,11 +6,15 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx ."
   },
   "dependencies": {
     "@tanstack/react-query": "^5.13.4",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
     "babel-plugin-root-import": "^6.6.0",
+    "eslint": "^8.55.0",
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
