@@ -1,9 +1,8 @@
-import { StyleSheet, Text, View } from "react-native"
-
-import React from "react"
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 interface Props {
-  title: string
+  title: string;
 }
 
 export const Header = ({ title }: Props) => {
@@ -11,21 +10,20 @@ export const Header = ({ title }: Props) => {
     <View style={styles.header}>
       <Text style={styles.title}>{title}</Text>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   header: {
-    justifyContent: "center",
     backgroundColor: "purple",
-    height: "40%"
+    height: "40%",
+    justifyContent: "center"
   },
   title: {
     color: "white",
-    margin: 24,
     fontSize: 28,
     fontWeight: "bold",
+    margin: 24,
     textAlign: "center"
   }
-})
-
+});

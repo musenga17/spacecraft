@@ -1,7 +1,7 @@
 import React from "react";
-import { TextInput } from "react-native-paper";
-import type { TextInputProps } from "react-native-paper";
 import { View } from "react-native";
+import type { TextInputProps } from "react-native-paper";
+import { TextInput } from "react-native-paper";
 
 export const FormInput = ({
   label,

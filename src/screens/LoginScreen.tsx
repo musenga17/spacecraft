@@ -1,9 +1,15 @@
-import { Button, TextInput } from "react-native-paper"
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { useState } from "react";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
+import { Button, TextInput } from "react-native-paper";
 
-import { FormInput } from "../components/FormInput"
-import { Header } from "../components/Header"
-import { useState } from "react"
+import { FormInput } from "../components/FormInput";
+import { Header } from "../components/Header";
 
 // You can import supported modules from npm
 //import { Card } from 'react-native-paper';
@@ -12,7 +18,7 @@ import { useState } from "react"
 //import AssetExample from './components/AssetExample';
 
 export default function LoginScreen() {
-  const [isPassWordHide, setIsPasswordHide] = useState(true)
+  const [isPassWordHide, setIsPasswordHide] = useState(true);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,15 +41,20 @@ export default function LoginScreen() {
             />
           }
         />
-        <Button style={styles.submitButton} mode="contained">
+        <Button
+          style={styles.submitButton}
+          mode="contained"
+        >
           Login
         </Button>
         <TouchableOpacity>
-          <Text style={styles.tocText}>by login you accept the Terms and Conditions.</Text>
+          <Text style={styles.tocText}>
+            by login you accept the Terms and Conditions.
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -54,12 +65,12 @@ const styles = StyleSheet.create({
     padding: 16
   },
   submitButton: {
-    marginVertical: 32,
-    marginHorizontal: 16
+    marginHorizontal: 16,
+    marginVertical: 32
   },
   tocText: {
-    textAlign: "center",
+    color: "#9CA3AF",
     fontSize: 14,
-    color: "#9CA3AF"
+    textAlign: "center"
   }
-})
+});

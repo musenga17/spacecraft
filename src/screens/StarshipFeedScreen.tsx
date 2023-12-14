@@ -1,28 +1,39 @@
-import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native"
+import React from "react";
+import {
+  FlatList,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
+import { ActivityIndicator } from "react-native-paper";
 
-import { ActivityIndicator } from "react-native-paper"
-import { CardItem } from "~/components/CardItem"
-import React from "react"
-import { useStarships } from "~/hooks/useStarships"
+import { CardItem } from "~/components/CardItem";
+import { useStarships } from "~/hooks/useStarships";
 
 export const StarshipFeedScreen = () => {
-  const { data, isError, isLoading } = useStarships()
+  const { data, isError, isLoading } = useStarships();
 
   if (isError) {
     return (
       <View style={styles.containerCenter}>
-        <Text style={styles.error}>Une erreur est survenue, veuillez réessayer ultérieurement</Text>
+        <Text style={styles.error}>
+          Une erreur est survenue, veuillez réessayer ultérieurement
+        </Text>
       </View>
-    )
+    );
   }
 
   if (isLoading) {
     return (
       <View style={styles.containerCenter}>
         <ActivityIndicator size="large" />
-        <Text style={styles.error}>Chargement des vaisseaux spatiaux en cours</Text>
+        <Text style={styles.error}>
+          Chargement des vaisseaux spatiaux en cours
+        </Text>
       </View>
-    )
+    );
   }
 
   return (
@@ -40,24 +51,24 @@ export const StarshipFeedScreen = () => {
         )}
       />
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0 // only for Android to avoid status bar overlap
   },
-  headerContainer: {
-    paddingHorizontal: 20,
-    marginTop: 20
+  containerCenter: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center"
   },
   error: {
     color: "red"
   },
-  containerCenter: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+  headerContainer: {
+    marginTop: 20,
+    paddingHorizontal: 20
   }
-})
+});
