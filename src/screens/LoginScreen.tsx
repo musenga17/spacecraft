@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Button, TextInput } from "react-native-paper";
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,10 +6,13 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import { Button, TextInput } from "react-native-paper";
 
 import { FormInput } from "../components/FormInput";
 import { Header } from "../components/Header";
+import React from "react";
+import { Routes } from "~/navigation/Routes";
+import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 // You can import supported modules from npm
 //import { Card } from 'react-native-paper';
@@ -19,6 +22,11 @@ import { Header } from "../components/Header";
 
 export default function LoginScreen() {
   const [isPassWordHide, setIsPasswordHide] = useState(true);
+  const navigation = useNavigation();
+
+  const navigateToTerms = () => {
+    navigation.navigate(Routes.TERMS_SCREEN as never);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -47,7 +55,7 @@ export default function LoginScreen() {
         >
           Login
         </Button>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={navigateToTerms}>
           <Text style={styles.tocText}>
             by login you accept the Terms and Conditions.
           </Text>

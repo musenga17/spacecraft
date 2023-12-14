@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import LoginScreen from "./src/screens/LoginScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import Navigator from "~/navigation/Navigator";
 import { Provider as PaperProvider } from "react-native-paper";
 import React from "react";
 import { StarshipFeedScreen } from "./src/screens/StarshipFeedScreen";
@@ -23,14 +25,15 @@ function App() {
       <PaperProvider>
         {/* <LoginScreen /> */}
         {/* <TermsScreen /> */}
-        <StarshipFeedScreen />
+        {/* <StarshipFeedScreen /> */}
+        <Navigator />
       </PaperProvider>
     </QueryClientProvider>
   );
 }
 
 // eslint-disable-next-line import/no-default-export
-//export default App;
+export default App;
 
 // return Storybook's UI
-export { default } from "./.storybook";
+//export { default } from "./.storybook";
