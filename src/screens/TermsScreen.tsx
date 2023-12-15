@@ -6,12 +6,12 @@ import { Routes } from "~/navigation/Routes";
 import { useNavigation } from "@react-navigation/native";
 
 export const TermsScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   function goBack() {
     // We need to use the screen props `{navigation}` to navigate back
     // it will be introduced in the next lesson `react-navigation`
-    navigation.navigate(Routes.LOGIN_SCREEN as never);
+    navigation.navigate(Routes.LOGIN_SCREEN);
   }
 
   return (

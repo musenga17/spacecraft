@@ -4,6 +4,8 @@ import LoginScreen from "~/screens/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { Routes } from "./Routes";
+import StarshipDetailsScreen from "~/screens/StarshipDetailsScreen";
+import { StarshipFeedScreen } from "~/screens/StarshipFeedScreen";
 import { TermsScreen } from "~/screens/TermsScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -20,6 +22,14 @@ export default function Navigator() {
         <Stack.Screen
           name={Routes.TERMS_SCREEN}
           component={TermsScreen}
+        />
+        <Stack.Screen
+          name={Routes.STARSHIP_FEED_SCREEN}
+          component={StarshipFeedScreen}
+        />
+        <Stack.Screen
+          name={Routes.STARSHIP_DETAIL_SCREEN}
+          component={StarshipDetailsScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

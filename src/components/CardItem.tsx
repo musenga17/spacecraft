@@ -1,13 +1,21 @@
-import React from "react";
-import { StyleSheet } from "react-native";
 import { Card, Text } from "react-native-paper";
 
-interface ItemProps {
+import React from "react";
+import { Routes } from "~/navigation/Routes";
+import { StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+interface CardItemProps {
   name: string;
   model: string;
   crew: string;
   hyperdrive: string;
   cost: string;
+  starshipClass: string;
+  manufacturer: string;
+  maxAtmospheringSpeed: string;
+  consumables: string;
+  cargoCapacity: string;
 }
 
 export const CardItem = ({
@@ -15,10 +23,26 @@ export const CardItem = ({
   model,
   crew,
   hyperdrive,
-  cost
-}: ItemProps) => {
+  cost,
+  starshipClass,
+  manufacturer,
+  maxAtmospheringSpeed,
+  consumables,
+  cargoCapacity
+}: CardItemProps) => {
+  const navigation = useNavigation<any>();
+
+  const handlePress = () => {
+    navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, {
+      starshipClass: starshipClass
+    });
+  };
+
   return (
-    <Card style={styles.card}>
+    <Card
+      style={styles.card}
+      onPress={handlePress}
+    >
       <Card.Title title={name} />
       <Card.Content style={styles.cardContent}>
         <Text>model: {model}</Text>

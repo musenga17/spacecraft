@@ -22,10 +22,14 @@ import { useState } from "react";
 
 export default function LoginScreen() {
   const [isPassWordHide, setIsPasswordHide] = useState(true);
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
+
+  const navigateToStarships = () => {
+    navigation.navigate(Routes.STARSHIP_FEED_SCREEN);
+  };
 
   const navigateToTerms = () => {
-    navigation.navigate(Routes.TERMS_SCREEN as never);
+    navigation.navigate(Routes.TERMS_SCREEN);
   };
 
   return (
@@ -52,6 +56,7 @@ export default function LoginScreen() {
         <Button
           style={styles.submitButton}
           mode="contained"
+          onPress={navigateToStarships}
         >
           Login
         </Button>

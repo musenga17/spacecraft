@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FlatList,
   SafeAreaView,
@@ -7,9 +6,12 @@ import {
   Text,
   View
 } from "react-native";
-import { ActivityIndicator } from "react-native-paper";
 
+import { ActivityIndicator } from "react-native-paper";
 import { CardItem } from "~/components/CardItem";
+import React from "react";
+import { Routes } from "~/navigation/Routes";
+import { useNavigation } from "@react-navigation/native";
 import { useStarships } from "~/hooks/useStarships";
 
 export const StarshipFeedScreen = () => {
@@ -47,6 +49,11 @@ export const StarshipFeedScreen = () => {
             crew={item.crew}
             hyperdrive={item.hyperdrive_rating}
             cost={item.cost_in_credits}
+            starshipClass={item.starship_class}
+            manufacturer={item.manufacturer}
+            maxAtmospheringSpeed={item.max_atmosphering_speed}
+            consumables={item.consumables}
+            cargoCapacity={item.cargo_capacity}
           />
         )}
       />
@@ -66,9 +73,5 @@ const styles = StyleSheet.create({
   },
   error: {
     color: "red"
-  },
-  headerContainer: {
-    marginTop: 20,
-    paddingHorizontal: 20
   }
 });
